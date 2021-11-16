@@ -22,7 +22,7 @@ io.on('connection', (socket)=>{
         const {error, user} = addUser({id: socket.id, name, room});
 
         if(error) return callback(error);
-
+        socket.emit('message', {user: "admin", text: `${user.name}, Welcome to the ${user.room} room`});
         socket.join(user.room);
     });
     socket.on('disconnect', ()=>{
