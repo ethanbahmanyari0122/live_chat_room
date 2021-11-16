@@ -19,14 +19,11 @@ app.use(cors())
 io.on('connection', (socket)=>{
     console.log('we have a new connection');
     socket.on('join', ({name,room}, callback)=>{
-        console.log(name, room);
-        const error = true;
+        const {error, user} = addUser({id: socket.id, name, room});
 
-        // if(error){
-        //     callback({error:'error'})
-        // }
+        if(error) return callback(error);
 
-        callback();
+        socket.join(user.room);
     });
     socket.on('disconnect', ()=>{
         console.log('User had left!');
