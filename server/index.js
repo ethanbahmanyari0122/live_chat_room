@@ -1,14 +1,26 @@
 const express = require('express');
 const socketio = require('socket.io');
 const http = require('http');
+const cors = require('cors');
 
-const PORT = process.env.Port || 5001;
+
+const PORT = process.env.PORT || 5001;
 const router = require('./router');
+
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, { cors: { origin: '*' } })
+
+app.use(router);
+app.use(cors())
+
 io.on('connection', (socket)=>{
     console.log('we have a new connection');
+    socket.on('join', ({name,room}, callback)=>{
+        console.log(name, room);
+
+        callback();
+    });
     socket.on('disconnect', ()=>{
         console.log('User had left!');
     });
@@ -16,6 +28,6 @@ io.on('connection', (socket)=>{
 
 
 
-app.use(router);
+
 
 server.listen(PORT, ()=> console.log(`servers working on port ${PORT}`));

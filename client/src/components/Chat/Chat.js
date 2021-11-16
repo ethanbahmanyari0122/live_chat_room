@@ -1,11 +1,20 @@
-import React, {  useState, useEffect } from "react";
-import querystring from "querystring";
-import io from "socket.io-client";
+import React, {  useState,useEffect } from "react";
+import queryString from 'query-string';
+import { socket } from '../../helpers/socket'
 
 
-const Chat = ()=> {
+const Chat = ({ location })=> {
+    const [name, setName] = useState('');
+    const [room, setRoom] = useState('');
+    const ENDPOINT = 'localhost:5001';
     useEffect(()=>{
-        const data = querystring.parse(location.search)
+        const {name, room} = queryString.parse(location.search);
+
+
+        setName(name);
+        setRoom(room);
+
+        socket.emit('join', { name , room });
     })
 
     return(
