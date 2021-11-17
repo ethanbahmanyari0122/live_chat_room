@@ -1,7 +1,7 @@
 import React, {  useState,useEffect } from "react";
 import queryString from 'query-string';
-import { socket } from '../../helpers/socket'
-
+import { socket } from '../../helpers/socket';
+import "./Chat.css";
 
 const Chat = ({ location })=> {
     const [name, setName] = useState('');
