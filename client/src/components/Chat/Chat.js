@@ -35,7 +35,13 @@ const Chat = ({ location })=> {
     }, [messages]);
 
     //function for sending messages
+    const sendMessage = (event) =>{
+        event.preventDefault();
 
+        if(message) {
+            socket.emit('sendMessage', message, ()=> setMessage(''));
+        }
+    }
     return(
         <div className="outerContainer">
             <div className="container">
