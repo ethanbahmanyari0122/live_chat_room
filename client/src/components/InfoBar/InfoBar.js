@@ -1,17 +1,17 @@
 import React from "react";
 import "./InfoBar.css";
-import ecology from "../../icons/ecology.png";
-import close from "../../icons/close.png";
+import closeIcon from "../../icons/onlineIcon.png";
+import onlineIcon from "../../icons/closeIcon.png";
 
 const InfoBar = ({room}) => {
     return (
     <div className="infoBar">
         <div className="leftInnerContainer">
-            <img className="onlineIcon" src={ecology} alt={"online"}/>
+            <img className="onlineIcon" src={onlineIcon} alt={"online"}/>
             <h3>{room}</h3>
         </div>
         <div className="rightInnerContainer">
-            <a href="/"><img src={close} alt={"close image"}/></a>
+            <a href="/"><img src={closeIcon} alt={"close image"}/></a>
         </div>
     </div>
 )}
