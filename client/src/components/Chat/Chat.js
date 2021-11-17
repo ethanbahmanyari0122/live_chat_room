@@ -30,7 +30,7 @@ const Chat = ({ location })=> {
 
             socket.off();
         }
-    },)
+    },[location.search])
 
     useEffect(()=>{
         socket.on('message', (message)=>{
@@ -47,7 +47,7 @@ const Chat = ({ location })=> {
         }
         setMessage('')
     }
-    console.log(message, messages);
+
     return(
         <div className="outerContainer">
             <div className="container">
