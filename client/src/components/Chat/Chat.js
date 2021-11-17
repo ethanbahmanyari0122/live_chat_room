@@ -3,6 +3,7 @@ import queryString from 'query-string';
 import { socket } from '../../helpers/socket';
 import "./Chat.css";
 import InfoBar from "../InfoBar/InfoBar";
+import Input from "../Input/Input";
 
 const Chat = ({ location })=> {
     const [name, setName] = useState('');
@@ -50,6 +51,7 @@ const Chat = ({ location })=> {
         <div className="outerContainer">
             <div className="container">
                 <InfoBar room={room}/>
+                <Input />
             </div>
         </div>
     )
