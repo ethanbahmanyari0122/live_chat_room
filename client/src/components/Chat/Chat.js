@@ -10,6 +10,7 @@ import TextContainer from "../TextContainer/TextContainer"
 const Chat = ({ location })=> {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
+    const [users, setUsers] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
@@ -36,8 +37,11 @@ const Chat = ({ location })=> {
     useEffect(()=>{
         socket.on('message', (message)=>{
             setMessages([...messages,message]);
-        })
-    }, [messages]);
+        });
+        socket.on("roomData", ({ users }) => {
+            setUsers(users);
+        });
+    }, []);
 
     //function for sending messages
     const sendMessage = (event) =>{
