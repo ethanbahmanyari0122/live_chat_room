@@ -4,7 +4,7 @@ an applicatioin built with node, express, react and socket.io.
 
 you could see the website under:
 
-<a href="https://6194ff390cbd3c00d04e1e10--ethans-chat-room.netlify.app">Live Website</a>
+<a href="https://ethans-chat-room.netlify.app/">Live Website</a>
 
 to run the app locally:
 
